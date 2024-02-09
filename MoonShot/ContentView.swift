@@ -19,13 +19,13 @@ struct CustomTextView: View {
 }
 struct ContentView: View {
     var body: some View {
-        ScrollView{
-            LazyVStack(spacing: 10){
-                ForEach(0..<50){ ele in
-                    CustomTextView(text: "My Text \(ele)")
+        NavigationStack {
+            List(0..<100){ row in
+                NavigationLink("Row \(row)"){
+                    Text("Row \(row)")
                 }
             }
-            .frame(maxWidth: .infinity)
+            .navigationTitle("SwiftUI")
         }
     }
 }
