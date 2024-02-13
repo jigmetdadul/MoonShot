@@ -19,6 +19,9 @@ extension Bundle{
             fatalError("Error while trying to get data from the url: \(url)")
         }
         let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-DD"
+        decoder.dateDecodingStrategy = .formatted(formatter)
         guard let decoded = try? decoder.decode(T.self, from: data) else{
             fatalError("Error while trying to decode \(data)")
         }
